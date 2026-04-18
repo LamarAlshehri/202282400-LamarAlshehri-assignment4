@@ -22,9 +22,34 @@
             </ul>
         </nav>
 
-        <!-- Theme Toggle -->
-        <button id="themeToggle">🌙</button>
+    <!-- Nav controls: login + theme -->
+        <div class="nav-controls">
+            <button id="loginBtn" class="nav-btn" aria-label="Login">Login</button>
+            <button id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+        </div>
     </header>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <h2 id="modalTitle">Welcome</h2>
+            <p class="modal-sub">Enter your name to personalise your visit.</p>
+            <div class="form-group">
+                <input type="text" id="visitorNameInput" placeholder="Your name" autocomplete="name" maxlength="40">
+                <span class="field-error" id="visitorNameError"></span>
+            </div>
+            <div class="modal-actions">
+                <button id="modalEnterBtn" class="btn-primary">Enter</button>
+                <button id="modalCancelBtn" class="btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visitor banner (shown when logged in) -->
+    <div id="visitorBanner" class="visitor-banner hidden">
+        <span id="visitorGreeting"></span>
+        <button id="logoutBtn" class="btn-ghost">Logout</button>
+    </div>
 
     <!-- About Me -->
     <section id="about" class="section fade-in">

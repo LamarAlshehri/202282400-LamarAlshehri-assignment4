@@ -347,3 +347,99 @@ contactForm.addEventListener("submit", (e) => {
         formMessage.classList.add("hidden");
     }, 5000);
 });
+
+// ─────────────────────────────────────────
+// 6. LOGIN / LOGOUT SIMULATION
+//    + VISITOR NAME STORAGE (localStorage)
+// ─────────────────────────────────────────
+const loginBtn         = document.getElementById("loginBtn");
+const loginModal       = document.getElementById("loginModal");
+const modalEnterBtn    = document.getElementById("modalEnterBtn");
+const modalCancelBtn   = document.getElementById("modalCancelBtn");
+const visitorNameInput = document.getElementById("visitorNameInput");
+const visitorNameError = document.getElementById("visitorNameError");
+const visitorBanner    = document.getElementById("visitorBanner");
+const visitorGreeting  = document.getElementById("visitorGreeting");
+const logoutBtn        = document.getElementById("logoutBtn");
+
+let isLoggedIn = false;
+
+function setLoggedIn(name) {
+    isLoggedIn = true;
+    localStorage.setItem("visitorName", name);
+
+    loginBtn.textContent = "Logout";
+    visitorBanner.classList.remove("hidden");
+    visitorGreeting.textContent = `👋 Welcome back, ${name}!`;
+    timeGreeting.textContent = `${getTimeGreeting()}, ${name}! Welcome to my portfolio.`;
+}
+
+function setLoggedOut() {
+    isLoggedIn = false;
+    localStorage.removeItem("visitorName");
+
+    loginBtn.textContent = "Login";
+    visitorBanner.classList.add("hidden");
+    timeGreeting.textContent = `${getTimeGreeting()}, welcome to my portfolio.`;
+}
+
+// Restore session from previous visit
+const savedName = localStorage.getItem("visitorName");
+if (savedName) setLoggedIn(savedName);
+
+// Login button: open modal or log out
+loginBtn.addEventListener("click", () => {
+    if (isLoggedIn) {
+        setLoggedOut();
+    } else {
+        visitorNameInput.value = "";
+        visitorNameError.textContent = "";
+        loginModal.classList.remove("hidden");
+        setTimeout(() => visitorNameInput.focus(), 60);
+    }
+});
+
+function closeModal() {
+    loginModal.classList.add("hidden");
+}
+
+modalCancelBtn.addEventListener("click", closeModal);
+
+// Close on overlay click
+loginModal.addEventListener("click", (e) => {
+    if (e.target === loginModal) closeModal();
+});
+
+// Close on Escape
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !loginModal.classList.contains("hidden")) closeModal();
+});
+
+function submitLogin() {
+    const name = visitorNameInput.value.trim();
+    if (!name) {
+        visitorNameError.textContent = "Please enter your name.";
+        visitorNameInput.focus();
+        return;
+    }
+    if (name.length < 2) {
+        visitorNameError.textContent = "Name must be at least 2 characters.";
+        visitorNameInput.focus();
+        return;
+    }
+    if (!/^[a-zA-Z\u0600-\u06FF\s'-]+$/.test(name)) {
+        visitorNameError.textContent = "Name can only contain letters.";
+        visitorNameInput.focus();
+        return;
+    }
+    closeModal();
+    setLoggedIn(name);
+}
+
+modalEnterBtn.addEventListener("click", submitLogin);
+
+visitorNameInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") submitLogin();
+});
+
+logoutBtn.addEventListener("click", setLoggedOut);
