@@ -694,3 +694,51 @@ textarea {
     .sort-controls { width: 100%; }
     #sortSelect { width: 100%; }
 }
+
+/* ========================================
+   LEVEL TOGGLE (conditional content)
+======================================== */
+.level-toggle {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+}
+
+.level-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.level-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.level-btn {
+    padding: 6px 16px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background var(--transition), color var(--transition),
+                border-color var(--transition), transform 0.15s;
+}
+
+.level-btn:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.level-btn.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .level-toggle { flex-direction: column; align-items: flex-start; }
+}

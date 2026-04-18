@@ -53,6 +53,21 @@ const observer = new IntersectionObserver(
 fadeEls.forEach((el) => observer.observe(el));
 
 // ─────────────────────────────────────────
+// 3a. EXPERIENCE LEVEL TOGGLE (conditional content)
+// ─────────────────────────────────────────
+const levelBtns = document.querySelectorAll(".level-btn");
+let activeLevel = "all";
+
+levelBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        levelBtns.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeLevel = btn.dataset.level;
+        filterProjects();
+    });
+});
+
+// ─────────────────────────────────────────
 // 3. PROJECT FILTER, SEARCH & SORT
 // ─────────────────────────────────────────
 const searchInput   = document.getElementById("searchInput");
@@ -92,18 +107,20 @@ function filterProjects() {
 
     document.querySelectorAll("#projectGrid .card").forEach((card) => {
         const category = card.dataset.category;
+        const level    = card.dataset.level || "all";
         const tags     = card.dataset.tags || "";
         const title    = card.querySelector("h3").textContent.toLowerCase();
         const desc     = card.querySelector("p").textContent.toLowerCase();
 
         const matchesCategory = activeFilter === "all" || category === activeFilter;
+        const matchesLevel    = activeLevel  === "all" || level === activeLevel;
         const matchesQuery    =
             !query ||
             title.includes(query) ||
             desc.includes(query) ||
             tags.includes(query);
 
-        const visible = matchesCategory && matchesQuery;
+        const visible = matchesCategory && matchesLevel && matchesQuery;
         card.classList.toggle("hidden", !visible);
         if (visible) visibleCount++;
     });
