@@ -1,0 +1,696 @@
+/* ========================================
+   CROSS-BROWSER COMPATIBILITY
+======================================== */
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+img {
+    -ms-interpolation-mode: bicubic;
+}
+
+button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input, textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 8px;
+}
+
+/* Safari flex gap fallback */
+.navbar ul > * + * { margin-left: 6px; }
+.filter-buttons > * + * { margin-left: 8px; }
+.skills-row > * + * { margin-right: 10px; }
+
+/* ========================================
+   RESET & VARIABLES
+======================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #ffffff;
+    --surface: #f5f5f5;
+    --surface-2: #ebebeb;
+    --text: #111111;
+    --text-muted: #555555;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --border: #cccccc;
+    --nav-bg: #1e1e2e;
+    --nav-text: #ffffff;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --card-bg: #ffffff;
+    --badge-web: #dbeafe;
+    --badge-web-text: #1d4ed8;
+    --badge-desktop: #d1fae5;
+    --badge-desktop-text: #065f46;
+    --badge-data: #fef3c7;
+    --badge-data-text: #92400e;
+    --error: #dc2626;
+    --success: #16a34a;
+    --transition: 0.3s ease;
+}
+
+body.dark {
+    --bg: #0f0f17;
+    --surface: #1a1a2e;
+    --surface-2: #22223b;
+    --text: #e8e8f0;
+    --text-muted: #9999bb;
+    --accent: #60a5fa;
+    --accent-hover: #93c5fd;
+    --border: #333355;
+    --shadow: rgba(0, 0, 0, 0.4);
+    --card-bg: #1a1a2e;
+    --badge-web: #1e3a5f;
+    --badge-web-text: #93c5fd;
+    --badge-desktop: #064e3b;
+    --badge-desktop-text: #6ee7b7;
+    --badge-data: #451a03;
+    --badge-data-text: #fbbf24;
+    --error: #f87171;
+    --success: #4ade80;
+}
+
+/* ========================================
+   BASE
+======================================== */
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-family: 'Trebuchet MS', sans-serif;
+    transition: background var(--transition), color var(--transition);
+}
+
+/* ========================================
+   NAVBAR
+======================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 32px;
+    background: var(--nav-bg);
+    color: var(--nav-text);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px var(--shadow);
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--nav-text);
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 6px;
+}
+
+.navbar a {
+    color: var(--nav-text);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    transition: background var(--transition), color var(--transition);
+    font-size: 0.95rem;
+}
+
+.navbar a:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+#themeToggle {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background var(--transition);
+}
+
+#themeToggle:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+/* ========================================
+   SECTIONS
+======================================== */
+.section {
+    padding: 64px 24px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 12px;
+    color: var(--text);
+}
+
+.section-sub {
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+}
+
+/* ========================================
+   SKILLS ROW
+======================================== */
+.skills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.skill-tag {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    transition: background var(--transition), transform 0.15s;
+}
+
+.skill-tag:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
+
+/* ========================================
+   TIME GREETING
+======================================== */
+.time-greeting {
+    text-align: center;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--accent);
+    margin-bottom: 16px;
+}
+
+/* ========================================
+   FILTER BAR
+======================================== */
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+#searchInput {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.95rem;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none;
+}
+
+#searchInput:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 18px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background var(--transition), color var(--transition),
+                border-color var(--transition), transform 0.15s;
+}
+
+.filter-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
+
+.filter-btn.active {
+    background: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+}
+
+/* ========================================
+   EMPTY STATE
+======================================== */
+.empty-state {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+/* ========================================
+   PROJECT GRID & CARDS
+======================================== */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    position: relative;
+    transition: transform 0.22s ease, box-shadow 0.22s ease,
+                opacity 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px var(--shadow);
+}
+
+.card img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    background: var(--surface-2);
+}
+
+.card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+    color: var(--text);
+}
+
+.card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+}
+
+.card-tags span {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+/* ========================================
+   BADGES
+======================================== */
+.badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+}
+
+.badge-web {
+    background: var(--badge-web);
+    color: var(--badge-web-text);
+}
+
+.badge-desktop {
+    background: var(--badge-desktop);
+    color: var(--badge-desktop-text);
+}
+
+.badge-data {
+    background: var(--badge-data);
+    color: var(--badge-data-text);
+}
+
+.card.hidden {
+    display: none;
+}
+
+/* ========================================
+   GITHUB REPOS SECTION
+======================================== */
+.loading-indicator {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 0;
+    color: var(--text-muted);
+}
+
+.spinner {
+    width: 22px;
+    height: 22px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    -webkit-animation: spin 0.8s linear infinite;
+    animation: spin 0.8s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    to { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.repo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+}
+
+.repo-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.repo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px var(--shadow);
+    border-color: var(--accent);
+}
+
+.repo-card h3 {
+    font-size: 0.98rem;
+    color: var(--accent);
+}
+
+.repo-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    flex: 1;
+}
+
+.repo-meta {
+    display: flex;
+    gap: 14px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.repo-lang {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.lang-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.error-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--error);
+    border-radius: 10px;
+    padding: 16px 20px;
+    color: var(--error);
+    font-size: 0.9rem;
+}
+
+.error-banner p {
+    flex: 1;
+    color: var(--text);
+}
+
+.error-banner button {
+    padding: 6px 16px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background var(--transition);
+    white-space: nowrap;
+}
+
+.error-banner button:hover {
+    background: var(--accent-hover);
+}
+
+/* ========================================
+   CONTACT FORM
+======================================== */
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 560px;
+    margin-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+input, textarea {
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.95rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+input:focus, textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+input.invalid, textarea.invalid {
+    border-color: var(--error);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.field-error {
+    font-size: 0.8rem;
+    color: var(--error);
+    min-height: 18px;
+    margin-top: 5px;
+}
+
+#submitBtn {
+    padding: 12px 28px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 4px;
+    transition: background var(--transition), transform 0.15s;
+    align-self: flex-start;
+}
+
+#submitBtn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+.form-success {
+    margin-top: 16px;
+    padding: 14px 18px;
+    background: var(--surface);
+    border: 1px solid var(--success);
+    border-radius: 8px;
+    color: var(--success);
+    font-size: 0.95rem;
+    animation: fadeIn 0.4s ease;
+}
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    opacity: 0;
+    -webkit-transform: translateY(18px);
+    transform: translateY(18px);
+    -webkit-transition: opacity 0.55s ease, -webkit-transform 0.55s ease;
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+
+/* ========================================
+   UTILITY
+======================================== */
+.hidden {
+    display: none !important;
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+.footer {
+    text-align: center;
+    padding: 28px 20px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 12px 20px;
+    }
+
+    .navbar ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #searchInput {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding: 40px 16px;
+    }
+
+    .section h2 {
+        font-size: 1.4rem;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+}
+
+/* ========================================
+   SORT CONTROLS
+======================================== */
+.sort-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sort-label {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+#sortSelect {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.88rem;
+    cursor: pointer;
+    outline: none;
+    transition: border-color var(--transition);
+}
+
+#sortSelect:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+@media (max-width: 768px) {
+    .sort-controls { width: 100%; }
+    #sortSelect { width: 100%; }
+}

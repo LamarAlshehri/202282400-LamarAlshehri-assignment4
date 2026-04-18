@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <h1 class="logo">Lamar Alshehri</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#github">GitHub</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Theme Toggle -->
+        <button id="themeToggle">🌙</button>
+    </header>
+
+    <!-- About Me -->
+    <section id="about" class="section fade-in">
+        <p id="timeGreeting" class="time-greeting"></p>
+        <h2>About Me</h2>
+        <p>
+            Hi, I'm <strong>Lamar Alshehri</strong>, a Software Engineering student at KFUPM
+            with experience leading full-stack academic projects and building Java/JavaFX applications.
+            Interested in scalable systems, backend development, and applying problem-solving skills
+            in real-world engineering environments.
+        </p>
+        <div class="skills-row">
+            <span class="skill-tag">React.js</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">JavaFX</span>
+            <span class="skill-tag">MySQL</span>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section fade-in">
+        <h2>Projects</h2>
+
+        <!-- Filter Controls -->
+        <div class="filter-bar">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search projects..."
+                aria-label="Search projects"
+            />
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="desktop">Desktop</button>
+                <button class="filter-btn" data-filter="data">Data</button>
+            </div>
+            <div class="sort-controls">
+                <label for="sortSelect" class="sort-label">Sort by:</label>
+                <select id="sortSelect" aria-label="Sort projects">
+                    <option value="default">Default</option>
+                    <option value="name-asc">Name A → Z</option>
+                    <option value="name-desc">Name Z → A</option>
+                    <option value="date-desc">Newest first</option>
+                    <option value="date-asc">Oldest first</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="emptyState" class="empty-state hidden">
+            <p>No projects match your search. Try a different keyword.</p>
+        </div>
+
+        <div class="project-grid" id="projectGrid">
+
+            <div class="card fade-in" data-category="web" data-tags="react node mysql web full-stack" data-date="2024-03" data-level="advanced">
+                <img src="assets/images/project1.png" alt="Project 1">
+                <span class="badge badge-web">Web</span>
+                <h3>Project 1: Kommute</h3>
+                <p>Designed and developed a web-based system to streamline university transportation coordination. Enabled request workflows for
+                    faculty and organizations, real-time schedule visibility for students, issue reporting, and administrative oversight of approvals and
+                    operations. Improved service transparency, reduced communication gaps, and supported efficient campus mobility.
+                </p>
+            </div>
+
+            <div class="card fade-in" data-category="desktop" data-tags="java javafx excel schedule desktop" data-date="2024-03" data-level="advanced">
+                <img src="assets/images/project2.png" alt="Project 2">
+                <span class="badge badge-desktop">Desktop</span>
+                <h3>Project 2: Term Schedule Visualizer & Route Planner</h3>
+                <p>Developed a JavaFX application to visualize student schedules, optimize walking routes across campus, and display real-time class
+                    data from an Excel file. I integrated Apache POI for Excel parsing and JavaFX for dynamic map rendering. I also Applied OOP principles (SRP, OCP) for scalable and maintainable design
+                </p>
+            </div>
+
+            <div class="card fade-in" data-category="desktop" data-tags="java javafx mysql horse racing management desktop" data-date="2024-03" data-level="advanced">
+                <img src="assets/images/project3.png" alt="Project 3">
+                <span class="badge badge-desktop">Desktop</span>
+                <h3>Project 3: Horse Racing Management System</h3>
+                <p>A JavaFX application that provides an intuitive interface for managing horse racing data, supporting both admin and guest users with
+                    distinct functionalities.
+                    • Implemented real-time data querying and management for admins to add races, approve trainers, and handle race-related
+                    information
+                    • Developed a guest interface for browsing race statistics, winning trainers, and horses by owner, backed by a robust MySQL
+                    database
+                </p>
+            </div>
+
+            <div class="card fade-in" data-category="data" data-tags="python fastapi pandas docker postgresql etl pipeline api data backend railway" data-date="2024-03" data-level="advanced">
+                <img src="assets/images/project4.png" alt="Project 4">
+                <span class="badge badge-data">Data</span>
+                <h3>Project 4: Well Log Ingestion & Query API</h3>
+                <p>• Built a Python ETL pipeline transforming 50,000+ data points per run into a structured PostgreSQL schema, applying
+                    automation and normalization techniques directly applicable to industrial data workflows.
+                    • Developed a FastAPI REST API with filterable query endpoints, containerized with Docker and deployed to Railway,
+                    demonstrating cloud-native deployment practices.
+                    • Designed a format-agnostic ingestion layer via a pluggable parser strategy, enabling scalable onboarding of new data sources
+                    with minimal overhead.
+                </p>
+            </div>
+
+            <div class="card fade-in" data-category="data" data-tags="python fastapi streamlit docker github actions ci/cd microservices api data backend dashboard" data-date="2024-03" data-level="advanced">
+                <img src="assets/images/project5.png" alt="Project 5">
+                <span class="badge badge-data">Data</span>
+                <h3>Project 5: Reservoir Data Integration Service</h3>
+                <p>• Architected a microservices layer unifying three heterogeneous data sources into a single normalized interface covering
+                    10,000+ readings, mirroring cloud-native data integration patterns.
+                    • Built two independently containerized services deployed via GitHub Actions CI/CD with zero manual intervention on push,
+                    applying DevOps practices for automated delivery.
+                    • Developed a Streamlit dashboard visualizing time-series trends, supporting data-driven decision making across multiple data
+                    streams.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- GitHub Section -->
+    <section id="github" class="section fade-in">
+        <h2>GitHub Activity</h2>
+        <p class="section-sub">Latest public repositories pulled live from GitHub.</p>
+        <div id="repoLoading" class="loading-indicator">
+            <div class="spinner"></div>
+            <span>Loading repositories...</span>
+        </div>
+        <div id="repoError" class="error-banner hidden">
+            <span>⚠️</span>
+            <p>Couldn't load GitHub repositories right now. Check your connection and try again.</p>
+            <button id="retryBtn">Retry</button>
+        </div>
+        <div id="repoGrid" class="repo-grid hidden"></div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section fade-in">
+        <h2>Contact Me</h2>
+
+        <form id="contactForm" novalidate>
+            <div class="form-group">
+                <input type="text" id="nameInput" placeholder="Your Name" autocomplete="name">
+                <span class="field-error" id="nameError"></span>
+            </div>
+            <div class="form-group">
+                <input type="email" id="emailInput" placeholder="Your Email" autocomplete="email">
+                <span class="field-error" id="emailError"></span>
+            </div>
+            <div class="form-group">
+                <textarea id="messageInput" placeholder="Your Message" rows="5"></textarea>
+                <span class="field-error" id="messageError"></span>
+            </div>
+            <button type="submit" id="submitBtn">Send Message</button>
+        </form>
+
+        <div id="formMessage" class="form-success hidden">
+            ✅ Message sent successfully! I'll get back to you soon.
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2025 Lamar Alshehri &mdash; Built with HTML, CSS &amp; JavaScript</p>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
