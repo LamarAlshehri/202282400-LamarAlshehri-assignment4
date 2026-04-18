@@ -53,6 +53,24 @@ const observer = new IntersectionObserver(
 fadeEls.forEach((el) => observer.observe(el));
 
 // ─────────────────────────────────────────
+// 2a. VISIT TIMER (counts seconds on page; resets each load)
+// ─────────────────────────────────────────
+const timerDisplay = document.getElementById("timerDisplay");
+let secondsOnSite = 0;
+
+function formatTime(secs) {
+    if (secs < 60) return `${secs}s`;
+    const m = Math.floor(secs / 60);
+    const s = secs % 60;
+    return `${m}m ${s}s`;
+}
+
+setInterval(() => {
+    secondsOnSite++;
+    timerDisplay.textContent = formatTime(secondsOnSite);
+}, 1000);
+
+// ─────────────────────────────────────────
 // 3a. EXPERIENCE LEVEL TOGGLE (conditional content)
 // ─────────────────────────────────────────
 const levelBtns = document.querySelectorAll(".level-btn");

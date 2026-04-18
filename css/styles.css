@@ -742,3 +742,12 @@ textarea {
 @media (max-width: 768px) {
     .level-toggle { flex-direction: column; align-items: flex-start; }
 }
+
+/* ========================================
+   VISIT TIMER
+======================================== */
+.visit-timer {
+    margin-top: 18px;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
