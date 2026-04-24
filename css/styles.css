@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit&family=PT+Mono&display=swap");
 /* ========================================
    CROSS-BROWSER COMPATIBILITY
 ======================================== */
@@ -38,7 +39,7 @@ input, textarea {
 }
 
 :root {
-    --bg: #ffffff;
+    --bg: transparent;
     --surface: #f5f5f5;
     --surface-2: #ebebeb;
     --text: #111111;
@@ -62,7 +63,7 @@ input, textarea {
 }
 
 body.dark {
-    --bg: #0f0f17;
+    --bg: #transparent;
     --surface: #1a1a2e;
     --surface-2: #22223b;
     --text: #e8e8f0;
@@ -94,8 +95,70 @@ body {
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
-    font-family: 'Trebuchet MS', sans-serif;
+    font-family: "PT Mono", monospace !important;
     transition: background var(--transition), color var(--transition);
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        135deg,
+        #e0f0ff 0%,
+        #f0e6ff 25%,
+        #e6f7ff 50%,
+        #fce4ec 75%,
+        #e8f5e9 100%
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 14s ease infinite;
+}
+
+body.dark::before {
+    background: linear-gradient(
+        135deg,
+        #0d1b2a 0%,
+        #1a0a2e 25%,
+        #0a1628 50%,
+        #1c0a1e 75%,
+        #0a1a1a 100%
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 14s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ========================================
+   BACKGROUND GLASS EFFECT
+======================================== */
+.section,
+.navbar,
+.footer {
+    position: relative;
+    z-index: 1;
+}
+
+.card,
+.repo-card {
+    background: rgba(255, 255, 255, 0.75);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+body.dark .card,
+body.dark .repo-card {
+    background: rgba(26, 26, 46, 0.75);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
 }
 
 /* ========================================
