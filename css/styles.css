@@ -169,15 +169,31 @@ body.dark .repo-card {
     justify-content: space-between;
     align-items: center;
     padding: 14px 32px;
-    background: var(--nav-bg);
+    background: rgba(30, 30, 46, 0.5);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     color: var(--nav-text);
     position: sticky;
     top: 0;
     z-index: 100;
     box-shadow: 0 2px 12px var(--shadow);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.logo {
+.logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-fallback {
+    display: none;
     font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: 0.5px;

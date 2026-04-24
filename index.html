@@ -12,7 +12,10 @@
 
     <!-- Navigation -->
     <header class="navbar">
-        <h1 class="logo">Lamar Alshehri</h1>
+        <a href="#about" class="logo-link">
+            <img src="assets/images/logo.png" alt="Lamar Alshehri" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+            <span class="logo-fallback">Lamar Alshehri</span>
+        </a>
         <nav>
             <ul>
                 <li><a href="#about">About</a></li>
@@ -54,6 +57,10 @@
     <!-- About Me -->
     <section id="about" class="section fade-in">
         <p id="timeGreeting" class="time-greeting"></p>
+
+        <!-- Visit timer -->
+        <p class="visit-timer">⏱ Time on site: <span id="timerDisplay">0s</span></p>
+
         <h2>About Me</h2>
         <p>
             Hi, I'm <strong>Lamar Alshehri</strong>, a Software Engineering student at KFUPM
@@ -72,9 +79,6 @@
             <span class="skill-tag">JavaFX</span>
             <span class="skill-tag">MySQL</span>
         </div>
-
-        <!-- Visit timer -->
-        <p class="visit-timer">⏱ Time on site: <span id="timerDisplay">0s</span></p>
 
         <!-- Level toggle: filters project cards by difficulty -->
         <div class="level-toggle">
@@ -125,6 +129,7 @@
 
             <div class="card fade-in" data-category="web" data-tags="react node mysql web full-stack" data-date="2024-03" data-level="advanced">
                 <img src="assets/images/project1.png" alt="Kommute campus bus tracking app" loading="lazy" width="400" height="225">
+                <span class="badge badge-web">Web</span>
                 <h3>Project 1: Kommute</h3>
                 <p>Designed and developed a web-based system to streamline university transportation coordination. Enabled request workflows for
                     faculty and organizations, real-time schedule visibility for students, issue reporting, and administrative oversight of approvals and
