@@ -95,36 +95,29 @@
 
         <!-- Filter Controls -->
         <div class="filter-bar">
-            <div class="filter-top-row">
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Search projects..."
-                    aria-label="Search projects"
-                />
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="web">Web</button>
-                    <button class="filter-btn" data-filter="desktop">Desktop</button>
-                    <button class="filter-btn" data-filter="data">Data</button>
+            <input type="text" id="searchInput" placeholder="Search projects..." aria-label="Search projects" />
+
+            <div class="filter-controls-row">
+                <div class="filter-group">
+                    <label for="filterSelect" class="sort-label">Filter by:</label>
+                    <select id="filterSelect" aria-label="Filter projects">
+                        <option value="all">All</option>
+                        <option value="web">Web</option>
+                        <option value="data">Data</option>
+                        <option value="desktop">Desktop</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
                 </div>
+
                 <div class="sort-controls">
                     <label for="sortSelect" class="sort-label">Sort by:</label>
                     <select id="sortSelect" aria-label="Sort projects">
-                        <option value="default">Default</option>
-                        <option value="name-asc">Name A → Z</option>
+                        <option value="name-asc">Default (A → Z)</option>
                         <option value="name-desc">Name Z → A</option>
                         <option value="date-desc">Newest first</option>
                         <option value="date-asc">Oldest first</option>
                     </select>
-                </div>
-                <div class="level-toggle">
-                    <p class="level-label">View projects suited for:</p>
-                    <div class="level-buttons">
-                        <button class="level-btn active" data-level="all">All</button>
-                        <button class="level-btn" data-level="beginner">Beginner</button>
-                        <button class="level-btn" data-level="advanced">Advanced</button>
-                    </div>
                 </div>
             </div>
         </div>

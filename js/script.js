@@ -88,19 +88,15 @@ levelBtns.forEach((btn) => {
 // ─────────────────────────────────────────
 // 3. PROJECT FILTER, SEARCH & SORT
 // ─────────────────────────────────────────
-const searchInput   = document.getElementById("searchInput");
-const filterButtons = document.querySelectorAll(".filter-btn");
-const sortSelect    = document.getElementById("sortSelect");
-const projectGrid   = document.getElementById("projectGrid");
-const emptyState    = document.getElementById("emptyState");
-
-let activeFilter = "all";
+const searchInput  = document.getElementById("searchInput");
+const filterSelect = document.getElementById("filterSelect");
+const sortSelect   = document.getElementById("sortSelect");
+const projectGrid  = document.getElementById("projectGrid");
+const emptyState   = document.getElementById("emptyState");
 
 function applySortOrder() {
     const cards = Array.from(document.querySelectorAll("#projectGrid .card"));
     const order = sortSelect.value;
-
-    if (order === "default") return;
 
     cards.sort((a, b) => {
         if (order === "name-asc" || order === "name-desc") {
@@ -120,7 +116,8 @@ function applySortOrder() {
 }
 
 function filterProjects() {
-    const query = searchInput.value.trim().toLowerCase();
+    const query     = searchInput.value.trim().toLowerCase();
+    const filterVal = filterSelect.value;
     let visibleCount = 0;
 
     document.querySelectorAll("#projectGrid .card").forEach((card) => {
@@ -130,15 +127,21 @@ function filterProjects() {
         const title    = card.querySelector("h3").textContent.toLowerCase();
         const desc     = card.querySelector("p").textContent.toLowerCase();
 
-        const matchesCategory = activeFilter === "all" || category === activeFilter;
-        const matchesLevel    = activeLevel  === "all" || level === activeLevel;
-        const matchesQuery    =
+        let matchesFilter = true;
+        if (filterVal === "beginner" || filterVal === "advanced") {
+            matchesFilter = level === filterVal;
+        } else if (filterVal !== "all") {
+            matchesFilter = category === filterVal;
+        }
+
+        const matchesLevel = activeLevel === "all" || level === activeLevel;
+        const matchesQuery =
             !query ||
             title.includes(query) ||
             desc.includes(query) ||
             tags.includes(query);
 
-        const visible = matchesCategory && matchesLevel && matchesQuery;
+        const visible = matchesFilter && matchesLevel && matchesQuery;
         card.classList.toggle("hidden", !visible);
         if (visible) visibleCount++;
     });
@@ -147,15 +150,10 @@ function filterProjects() {
     emptyState.classList.toggle("hidden", visibleCount > 0);
 }
 
-filterButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        filterButtons.forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-        activeFilter = btn.dataset.filter;
-        filterProjects();
-    });
-});
+// Initialize with default A-Z sort
+filterProjects();
 
+filterSelect.addEventListener("change", filterProjects);
 searchInput.addEventListener("input", filterProjects);
 sortSelect.addEventListener("change", filterProjects);
 
