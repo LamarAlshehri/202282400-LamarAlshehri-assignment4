@@ -265,7 +265,89 @@ Vendor prefixes applied: `-webkit-backdrop-filter`, `-webkit-appearance`, `-moz-
 
 ---
 
-## 7. Known Limitations
+## 7. User Guide
+
+This section is written for visitors — no technical knowledge required.
+
+### Visiting the Site
+
+Open the site at [https://lamaralshehri.github.io/202282400-LamarAlshehri-assignment4/](https://lamaralshehri.github.io/202282400-LamarAlshehri-assignment4/) in any modern browser. The page loads directly to the hero section at the top.
+
+---
+
+### Switching Between Dark and Light Mode
+
+Look for the **sun/moon icon** (🌙 / ☀️) in the top-right corner of the navigation bar. Click it to switch between dark and light mode. The site remembers your preference the next time you visit.
+
+---
+
+### Navigating the Site
+
+The navigation bar at the top contains links to every section:
+
+| Link | Takes you to |
+|---|---|
+| About | A short introduction and background |
+| Skills | A list of technical skills |
+| Projects | All five projects with filtering and search |
+| GitHub | Live repositories pulled from GitHub |
+| Contact | A contact form to send a message |
+
+On a phone, tap the **☰ menu icon** in the top-right to open the navigation links, then tap any link to jump to that section.
+
+---
+
+### Browsing Projects
+
+The Projects section has three tools to help you find what you are looking for:
+
+**Search** — Type any keyword into the search bar (e.g. "Python", "Java", "web") and the project cards will filter in real time as you type.
+
+**Filter By** — Use the dropdown to narrow projects by type or difficulty:
+- *All* — shows every project
+- *Web* — web-based projects
+- *Data* — data engineering and analytics projects
+- *Desktop* — Java desktop applications
+- *Beginner* — projects suitable for anyone
+- *Advanced* — projects with more complex concepts
+
+**Sort By** — Use the dropdown to reorder the cards:
+- *Default (A → Z)* — alphabetical order
+- *Name Z → A* — reverse alphabetical
+- *Newest first* — most recently completed at the top
+- *Oldest first* — earliest completed at the top
+
+**View projects suited for** — Use the pill buttons (All / Beginner / Advanced) to further narrow results by difficulty level alongside the other filters.
+
+---
+
+### Connecting on LinkedIn or GitHub
+
+The **LinkedIn** and **GitHub** icons in the top-right of the navbar are direct links to my profiles. Click either icon to open the profile in a new tab.
+
+---
+
+### Sending a Message
+
+Scroll to the **Contact** section or click the Contact link in the navbar.
+
+1. Fill in your name, email address, subject, and message.
+2. The message must be at least 20 characters. A counter below the message box shows how many characters you have typed.
+3. Click **Send Message**. A confirmation will appear if everything is filled in correctly.
+
+If any field is missing or incorrect, an error message will appear directly below that field explaining what to fix.
+
+---
+
+### GitHub Activity Section
+
+The **GitHub** section automatically loads my six most recently updated public repositories from GitHub. Each card shows the repository name, description, programming language, stars, and forks. Click any card to open the repository on GitHub in a new tab.
+
+If the repositories fail to load (e.g. due to a network issue), an error message appears with a **Retry** button.
+
+---
+
+## 8. Known Limitations
 
 - **GitHub API rate limit:** Unauthenticated requests are capped at 60 per hour per IP. The error banner handles HTTP 403 specifically.
 - **Contact form is client-side only:** No backend — form submission is simulated. A real deployment would integrate Formspree or EmailJS.

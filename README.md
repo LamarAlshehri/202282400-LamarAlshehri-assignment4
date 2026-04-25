@@ -3,7 +3,7 @@
 **Student ID:** 202282400  
 **Course:** SWE363 – Web Development  
 **Assignment:** 4 – Complete Personal Web Application  
-**Live Deployment:** [https://lamaralshehri.github.io/202282400-LamarAlshehri-assignment4/](https://lamaralshehri.github.io/202282400-LamarAlshehri-assignment4/)
+**Live Deployment:** [https://lamaralshehri.github.io/202282400-LamarAlshehri-assignment4/](https://lamaralshehri.github.io/202282400-LamarAlshehri-assignment4/)  
 
 ---
 
@@ -99,7 +99,7 @@ No installation, build step, server, or internet connection required for core fe
 ## Deployment
 
 Deployed via **GitHub Pages** from the `main` branch, root folder.  
-Live URL: [https://lamaralshehri.github.io/202282400-LamarAlshehri-assignment4/](https://lamaralshehri.github.io/202282400-LamarAlshehri-assignment4/)
+Live URL: **[https://lamaralshehri.github.io/202282400-LamarAlshehri-assignment4/](https://lamaralshehri.github.io/202282400-LamarAlshehri-assignment4/)**
 
 ---
 
