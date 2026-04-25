@@ -302,25 +302,28 @@ body.dark .repo-card {
 }
 
 @media (max-width: 768px) {
-    .hero-section {
-        flex-direction: column;
-        gap: 24px;
-        padding: 40px 24px 0;
-        text-align: center;
+    .navbar {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 16px;
+        gap: 0;
     }
 
-    .hero-img { width: 80%; max-width: 320px; }
-
-    .time-greeting {
-        font-size: 1.4rem;
+    .navbar nav ul {
+        display: none;
     }
 
-    .typing-cursor {
-        border-right: none;
-        animation: none;
+    .nav-controls {
+        gap: 4px;
+    }
+
+    #themeToggle {
+        padding: 4px 6px;
+        font-size: 0.9rem;
     }
 }
-
 /* ========================================
    SKILLS ROW
 ======================================== */
