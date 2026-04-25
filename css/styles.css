@@ -248,6 +248,19 @@ body.dark .repo-card {
     background: rgba(255,255,255,0.15);
 }
 
+.cv-btn {
+    font-size: 0.82rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 5px 12px;
+    border-radius: 8px;
+    letter-spacing: 0.3px;
+}
+
+.cv-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
 /* ========================================
    SECTIONS
 ======================================== */
@@ -1085,3 +1098,4 @@ textarea {
 
 .char-counter.warn { color: #f59e0b; }
 .char-counter.over { color: var(--error); font-weight: 600; }
+
