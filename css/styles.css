@@ -165,8 +165,8 @@ body.dark .repo-card {
    NAVBAR
 ======================================== */
 .navbar {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     padding: 14px 32px;
     background: rgba(30, 30, 46, 0.5);
@@ -190,6 +190,8 @@ body.dark .repo-card {
     height: 36px;
     width: auto;
     object-fit: contain;
+    transform: scale(2.5);
+    transform-origin: left center;
 }
 
 .logo-fallback {
@@ -221,7 +223,7 @@ body.dark .repo-card {
 
 #themeToggle {
     background: transparent;
-    border: 1px solid rgba(255,255,255,0.3);
+    border: none;
     color: white;
     padding: 6px 12px;
     border-radius: 8px;
@@ -298,19 +300,23 @@ body.dark .repo-card {
 ======================================== */
 .filter-bar {
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-items: center;
-    margin-bottom: 28px;
     flex-direction: column;
+    gap: 12px;
     align-items: stretch;
+    margin-bottom: 28px;
 }
 
-.filter-top-row {
+.filter-controls-row {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
     align-items: center;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 #searchInput {
@@ -331,33 +337,31 @@ body.dark .repo-card {
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
-.filter-buttons {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.filter-btn {
-    padding: 8px 18px;
+#filterSelect,
+#sortSelect {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 8px 12px;
     border: 1px solid var(--border);
     border-radius: 8px;
     background: var(--surface);
     color: var(--text);
+    font-size: 0.88rem;
     cursor: pointer;
-    font-size: 0.9rem;
-    transition: background var(--transition), color var(--transition),
-                border-color var(--transition), transform 0.15s;
+    outline: none;
+    transition: border-color var(--transition);
 }
 
-.filter-btn:hover {
-    transform: translateY(-2px);
+#filterSelect:focus,
+#sortSelect:focus {
     border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
-.filter-btn.active {
-    background: var(--accent);
-    color: #ffffff;
-    border-color: var(--accent);
+@media (max-width: 768px) {
+    .filter-controls-row { flex-direction: column; align-items: stretch; }
+    #filterSelect, #sortSelect { width: 100%; }
 }
 
 /* ========================================
@@ -847,11 +851,12 @@ textarea {
     display: flex;
     align-items: center;
     gap: 8px;
+    justify-content: flex-end;
 }
 
 .nav-btn {
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: none;
     color: var(--nav-text);
     padding: 6px 14px;
     border-radius: 8px;
@@ -862,6 +867,25 @@ textarea {
 
 .nav-btn:hover {
     background: rgba(255, 255, 255, 0.18);
+}
+
+.nav-social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--nav-text);
+    padding: 6px;
+    border-radius: 8px;
+    transition: background var(--transition);
+}
+
+.nav-social-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.nav-social-btn span {
+    display: none;
 }
 
 /* ========================================
