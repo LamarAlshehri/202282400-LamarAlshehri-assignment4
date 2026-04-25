@@ -1,3 +1,6 @@
+// Scroll to top on load
+window.scrollTo(0, 0);
+
 // ─────────────────────────────────────────
 // 0. TIME-BASED GREETING
 // ─────────────────────────────────────────
@@ -11,7 +14,44 @@ function getTimeGreeting() {
     return "Good night";
 }
 
-timeGreeting.textContent = `${getTimeGreeting()}, welcome to my portfolio.`;
+const line1 = `${getTimeGreeting()},`;
+const line2 = `welcome to my portfolio.`;
+
+timeGreeting.innerHTML = '';
+
+function typeLines(el, lines, speed = 60) {
+    let lineIndex = 0;
+    let charIndex = 0;
+    let current = '';
+
+    function tick() {
+        if (lineIndex >= lines.length) {
+            const cursor = el.querySelector('.typing-cursor');
+            if (cursor) cursor.style.borderRight = 'none';
+            return;
+        }
+
+        current += lines[lineIndex][charIndex];
+        charIndex++;
+
+        el.innerHTML = lines.slice(0, lineIndex).map(l => `<span>${l}</span>`).join('<br>') +
+               (lineIndex > 0 ? '<br>' : '') +
+               `<span class="typing-cursor">${current}</span>`;
+
+        if (charIndex >= lines[lineIndex].length) {
+            lineIndex++;
+            charIndex = 0;
+            current = '';
+            setTimeout(tick, 300);
+        } else {
+            setTimeout(tick, speed);
+        }
+    }
+
+    tick();
+}
+
+typeLines(timeGreeting, [line1, line2]);
 
 // ─────────────────────────────────────────
 // 1. THEME TOGGLE  (persisted via localStorage)

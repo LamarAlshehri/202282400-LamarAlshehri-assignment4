@@ -258,6 +258,70 @@ body.dark .repo-card {
 }
 
 /* ========================================
+   HERO SECTION
+======================================== */
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    padding: 60px 48px 0;
+    min-height: 60vh;
+}
+
+.hero-img {
+    max-width: 480px;
+    width: 45%;
+    height: auto;
+    object-fit: contain;
+    animation: heroFloat 4s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes heroFloat {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-16px); }
+}
+
+.time-greeting {
+    font-size: 2.2rem;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1.6;
+    max-width: 420px;
+}
+
+.typing-cursor {
+    border-right: 3px solid var(--accent);
+    animation: blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { border-color: var(--accent); }
+    50%       { border-color: transparent; }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        gap: 24px;
+        padding: 40px 24px 0;
+        text-align: center;
+    }
+
+    .hero-img { width: 80%; max-width: 320px; }
+
+    .time-greeting {
+        font-size: 1.4rem;
+    }
+
+    .typing-cursor {
+        border-right: none;
+        animation: none;
+    }
+}
+
+/* ========================================
    SKILLS ROW
 ======================================== */
 .skills-row {
@@ -284,16 +348,6 @@ body.dark .repo-card {
     border-color: var(--accent);
 }
 
-/* ========================================
-   TIME GREETING
-======================================== */
-.time-greeting {
-    text-align: center;
-    font-size: 1.25rem;
-    font-style: italic;
-    color: var(--accent);
-    margin-bottom: 16px;
-}
 
 /* ========================================
    FILTER BAR
