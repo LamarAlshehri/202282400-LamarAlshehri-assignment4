@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+__MACOSX/
+
+# Thumbnails
+._*
+
+# Editor folders
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+ehthumbs.db
