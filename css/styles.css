@@ -271,9 +271,14 @@ body.dark .repo-card {
 }
 
 .section h2 {
-    font-size: 1.75rem;
+    font-size: 2rem;
     margin-bottom: 12px;
-    color: var(--text);
+    color: transparent;
+    background: linear-gradient(90deg, #4ecdc4, #a8e063);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: none;
+    filter: drop-shadow(0 0 8px rgba(78, 205, 196, 0.4));
 }
 
 .section-sub {
